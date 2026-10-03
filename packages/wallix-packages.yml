@@ -1,0 +1,34 @@
+generated: '2026-10-03'
+method: probed
+generator: harvest-packages.py
+source: registry metadata endpoints (registry.npmjs.org, pypi.org, rubygems.org, api.nuget.org, packagist.org, crates.io) ; github.com/wallix
+ownership_rule: 'official: true only when the registry metadata (homepage, repository, author, URLs) names the provider''s domain (security/wallix-domain-security.yml,
+  wallix.com) or its accepted GitHub org (wallix).'
+packages:
+- name: vault-clients
+  registry: github
+  url: https://github.com/wallix/vault-clients
+  language: ''
+  official: true
+  version: null
+  published: '2023-04-19'
+  source_repo: https://github.com/wallix/vault-clients
+  evidence: repository in github.com/wallix, whose profile names the provider's domain
+- name: datapeps-sdk-js
+  registry: github
+  url: https://github.com/wallix/datapeps-sdk-js
+  language: JavaScript
+  official: true
+  version: null
+  published: '2019-09-09'
+  source_repo: https://github.com/wallix/datapeps-sdk-js
+  evidence: repository in github.com/wallix, whose profile names the provider's domain
+- name: pylibssh2
+  registry: github
+  url: https://github.com/wallix/pylibssh2
+  language: C
+  official: true
+  version: null
+  published: '2017-04-13'
+  source_repo: https://github.com/wallix/pylibssh2
+  evidence: repository in github.com/wallix, whose profile names the provider's domain
