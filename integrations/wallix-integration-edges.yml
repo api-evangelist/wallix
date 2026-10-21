@@ -3,8 +3,26 @@ method: searched
 checked:
 - https://azuremarketplace.microsoft.com/
 - palo-alto-networks/integrations/palo-alto-networks-integration-edges.yml
+- opentofu/integrations/opentofu-integration-edges.yml
+- terraform/integrations/terraform-integration-edges.yml
 marketplace_apps: []
 edges:
+- partner_name: Microsoft Azure Marketplace
+  partner: microsoft-azure
+  partner_match: aggregator
+  type: marketplace
+  marketplace: azure-marketplace
+  channel: distribution
+  relationship: distribution-channel
+  direction: third-party
+  evidence: https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=Wallix
+  listing_count: 2
+  apps:
+  - WALLIX Bastion
+  - Access Manager
+  seller_name: Wallix
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
 - partner_name: Palo Alto Networks (own)
   partner: palo-alto-networks
   partner_match: mirror
@@ -24,21 +42,42 @@ edges:
   category: Identity and Access Management
   badges:
   - support:partner
-- partner_name: Microsoft Azure Marketplace
-  partner: microsoft-azure
-  partner_match: aggregator
+- partner_name: OpenTofu (opentofu-registry)
+  partner: opentofu
+  partner_match: mirror
+  mirror_match: register
   type: marketplace
-  marketplace: azure-marketplace
-  channel: distribution
-  relationship: distribution-channel
+  relationship: platform-app
   direction: third-party
-  evidence: https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=Wallix
-  listing_count: 2
+  channel: partner-built
+  marketplace: opentofu-registry
+  evidence: https://search.opentofu.org/provider/wallix/wallix-bastion
+  mirror_of: opentofu/integrations/opentofu-integration-edges.yml
   apps:
-  - WALLIX Bastion
-  - Access Manager
-  seller_name: Wallix
-  detected_by: sweep-cloud-marketplaces.py
-  detected: '2026-10-13'
+  - wallix/wallix-bastion
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: infrastructure-as-code provider registry listing
+- partner_name: Terraform (terraform-registry)
+  partner: terraform
+  partner_match: mirror
+  mirror_match: register
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: terraform-registry
+  evidence: https://registry.terraform.io/providers/wallix/wallix-bastion
+  mirror_of: terraform/integrations/terraform-integration-edges.yml
+  apps:
+  - wallix/wallix-bastion
+  - wallix/waapm
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: infrastructure-as-code provider registry listing
+  badges:
+  - Verified publisher (Terraform partner tier)
 source:
 - palo-alto-networks/integrations/palo-alto-networks-integration-edges.yml
